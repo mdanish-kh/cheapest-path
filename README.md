@@ -28,9 +28,9 @@ e.g., `python cheapest_path.py ISB NYC`
 
 Replace `python` with `python3` in the above commands.
 
-## Approach and Assumptions
+## Approach
 
-The problem is a classic example of graph traversal. The solution uses Dijkstra's algorithm to find the cheapest path from the start airport to the end airport. The airports are retrieved from a local `.json` file. The graph is built using a python dictionary where the keys are the airports and the values are the connections from that airport. The connections are stored as a list of tuples, where each tuple contains the destination airport and the cost of the connection. The representation follows the adjacency list representation of a graph. Sample graph representation is as follows:
+The problem is a classic example of graph traversal. The solution uses Dijkstra's algorithm (greedy algo) to find the cheapest path from the start airport to the end airport. The airports are retrieved from a local `.json` file. The graph is built using a python dictionary where the keys are the airports and the values are the connections from that airport. The connections are stored as a list of tuples, where each tuple contains the destination airport and the cost of the connection. The representation follows the adjacency list representation of a graph. Sample graph representation is as follows:
 
 ```python
 {
@@ -51,4 +51,7 @@ graph TD;
     NYC -->|459| GRC;
 ```
 
-The solution assumes that airports are uni-directional. For example, if there is a connection from `ISB` to `LHR`, it does not assume that there is a connection from `LHR` to `ISB`. This is consistent with the fact that if a direct flight is available from `ISB` to `NYC`, it does not necessarily mean that a direct flight is available from `NYC` to `ISB` (airports tend to change routes based on various conditions). The solution also assumes that the cost of the connection is **non-negative**. (Dijkstra's algorithm does not work with negative weights).
+## Assumptions
+
+- The solution assumes that airports are uni-directional. For example, if there is a connection from `ISB` to `LHR`, it does not assume that there is a connection from `LHR` to `ISB`. This is consistent with the fact that if a direct flight is available from `ISB` to `NYC`, it does not necessarily mean that a direct flight is available from `NYC` to `ISB` (airports tend to change routes based on various conditions).
+- The cost of the connection is assumed to be **non-negative**. (Dijkstra's algorithm does not work with negative weights).
