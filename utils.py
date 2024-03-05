@@ -35,15 +35,23 @@ def generate_airports_graph(airports: list):
 
         # Append the connection to the existing graph node if starting node exists
         else:
-            graph[start].append((end, cost))
+            # Prevent duplicate connections
+            if end not in graph[start]:
+                graph[start].append((end, cost))
+
+        # Add leaf or end nodes to the graph with empty lists
+        if end not in graph:
+            graph[end] = []
 
     return graph
 
 # Implements the Dijkstra's algorithm to find single source
 # shortest path on a weighted graph
-
-
 def cheapest_graph_path(graph: dict, start: str, end: str):
+
+    # If the start and end nodes are the same, return the start node with a cost of 0
+    if start == end:
+        return [start], 0
 
     # Initialize the costs of all nodes to infinity
     costs = {node: float('infinity') for node in graph}
@@ -75,7 +83,7 @@ def cheapest_graph_path(graph: dict, start: str, end: str):
             cost = current_cost + weight
 
             # If neighbor is reachable from the current node and the cost to reach neighbor is cheaper than the previous cost
-            if neighbor in costs and cost < costs[neighbor]:
+            if cost < costs[neighbor]:
 
                 # Perform the relaxation operation (update the cost of the neighbor)
                 costs[neighbor] = cost
