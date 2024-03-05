@@ -57,11 +57,11 @@ def find_cheapest_path(airports: list, start: str, end: str):
     # Validate input
     if start not in all_airports:
         print(f"'{start}' is not a valid value for a starting airport.")
-        exit()
+        exit(1)
 
     if end not in all_airports:
         print(f"'{end}' is not a valid value for an ending airport.")
-        exit()
+        exit(1)
 
     return cheapest_graph_path(airports_graph, start, end)
 
