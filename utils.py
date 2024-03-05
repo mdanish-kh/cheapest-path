@@ -4,6 +4,8 @@ import heapq
 
 # Get airport data from a local JSON file.
 # This implementation can be updated if we are receiving data from an actual API endpoint.
+
+
 def get_airports(path):
     with open(path) as data_file:
         data = json.load(data_file)
@@ -15,6 +17,8 @@ def get_airports(path):
 #     'ISB': [('LHR', 1000), ('CBS', 575)],
 #     'LHR': [('NYC', 750)],
 # }
+
+
 def generate_airports_graph(airports: list):
     graph = {}
 
@@ -37,6 +41,8 @@ def generate_airports_graph(airports: list):
 
 # Implements the Dijkstra's algorithm to find single source
 # shortest path on a weighted graph
+
+
 def cheapest_graph_path(graph: dict, start: str, end: str):
 
     # Initialize the costs of all nodes to infinity
@@ -66,7 +72,6 @@ def cheapest_graph_path(graph: dict, start: str, end: str):
         # If the current node is not the end node
         # Iterate through its neighbors and update their costs if a cheaper path is found
         for neighbor, weight in graph[current_node]:
-            print(costs)
             cost = current_cost + weight
 
             # If neighbor is reachable from the current node and the cost to reach neighbor is cheaper than the previous cost
@@ -78,6 +83,10 @@ def cheapest_graph_path(graph: dict, start: str, end: str):
 
                 # Update previous nodes dictionary
                 previous_nodes[neighbor] = current_node
+
+    # If no path exists from start to end, return None, None
+    if end not in previous_nodes:
+        return None, None
 
     # Construct the cheapest path from the starting node to the end node
     shortest_path = []
