@@ -1,0 +1,6 @@
+# .gitignore for Python projects
+# Subset of https://github.com/github/gitignore/blob/main/Python.gitignore
+
+__pycache__/
+*.py[cod]
+*$py.class
