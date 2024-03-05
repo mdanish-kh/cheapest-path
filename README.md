@@ -55,3 +55,12 @@ graph TD;
 
 - The solution assumes that airports are uni-directional. For example, if there is a connection from `ISB` to `LHR`, it does not assume that there is a connection from `LHR` to `ISB`. This is consistent with the fact that if a direct flight is available from `ISB` to `NYC`, it does not necessarily mean that a direct flight is available from `NYC` to `ISB` (airports tend to change routes based on various conditions).
 - The cost of the connection is assumed to be **non-negative**. (Dijkstra's algorithm does not work with negative weights).
+
+## Time and Space Complexity
+
+Time complexity = O(V<sup>2</sup>) (worst case i.e., complete graph) or `O(E log V)` (sparse graph)
+
+Space complexity = O(V + E)
+
+The time complexity of the main algorithm involving Dijkstra's algorithm is `O(V<sup>2</sup>)` where `V` is the number of vertices in the graph or airports in this case. If the graph is sparse, i.e., the number of edges `E` is much less than `V<sup>2</sup>`, then the time complexity is `O(E log V)`.
+The space complexity is `O(V + E)` to store the adjacency list representation of the graph, where `E` is the number of edges in the graph or in this case the number of connections between airports. A priority queue is used to store the vertices and their costs, which has a space complexity of `O(V)`. So, the overall space complexity is `O(V + E)`.
