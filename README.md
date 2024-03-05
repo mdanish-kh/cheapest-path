@@ -41,4 +41,14 @@ The problem is a classic example of graph traversal. The solution uses Dijkstra'
 }
 ```
 
+```mermaid
+graph TD;
+    ISB -->|1000| LHR;
+    ISB -->|575| CBS;
+    LHR -->|750| NYC;
+    CBS -->|775| NYC;
+    CBS -->|731| GRC;
+    NYC -->|459| GRC;
+```
+
 The solution assumes that airports are uni-directional. For example, if there is a connection from `ISB` to `LHR`, it does not assume that there is a connection from `LHR` to `ISB`. This is consistent with the fact that if a direct flight is available from `ISB` to `NYC`, it does not necessarily mean that a direct flight is available from `NYC` to `ISB` (airports tend to change routes based on various conditions). The solution also assumes that the cost of the connection is **non-negative**. (Dijkstra's algorithm does not work with negative weights).
