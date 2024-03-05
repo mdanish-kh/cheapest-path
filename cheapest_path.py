@@ -1,7 +1,10 @@
 from utils import get_airports, generate_airports_graph, cheapest_graph_path
 import sys
 
-# Entry point of the program
+"""Entry point of the program
+"""
+
+
 def main():
     start_airport = None
     end_airport = None
@@ -27,7 +30,8 @@ def main():
     airports_data = get_airports('./airports.json')
 
     # Get cheapest path and related cost for user-provided start and end airports
-    cheapest_path, cost = find_cheapest_path(airports_data, start_airport, end_airport)
+    cheapest_path, cost = find_cheapest_path(
+        airports_data, start_airport, end_airport)
 
     if not cheapest_path:
         print(f"No path found between {start_airport} and {end_airport}.")
@@ -38,11 +42,17 @@ def main():
 
 
 def find_cheapest_path(airports: list, start: str, end: str):
+    """Find the cheapest path between two airports
+    Function to be considered as the solution to the given problem
+    Takes in a list of airports and the start and end airports and returns
+    the cheapest path and the cost.
+    """
     # Build the airport graph
     airports_graph: dict = generate_airports_graph(airports)
 
     # Get all airports from the data
-    all_airports = [airport['start'] for airport in airports] + [airport['end'] for airport in airports]
+    all_airports = [airport['start'] for airport in airports] + \
+        [airport['end'] for airport in airports]
 
     # Validate input
     if start not in all_airports:

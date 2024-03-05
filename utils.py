@@ -2,24 +2,24 @@
 import json
 import heapq
 
-# Get airport data from a local JSON file.
-# This implementation can be updated if we are receiving data from an actual API endpoint.
-
 
 def get_airports(path):
+    """ Get airport data from a local JSON file.
+    This implementation can be updated if we are receiving data from an actual API endpoint.
+    """
     with open(path) as data_file:
         data = json.load(data_file)
         return data
 
-# Builds a directed airport graph in adjacency list representation format.
-# Sample output:
-# {
-#     'ISB': [('LHR', 1000), ('CBS', 575)],
-#     'LHR': [('NYC', 750)],
-# }
-
 
 def generate_airports_graph(airports: list):
+    """ Builds a directed airport graph in adjacency list representation format.
+    Sample output:
+    {
+        'ISB': [('LHR', 1000), ('CBS', 575)],
+        'LHR': [('NYC', 750)],
+    }
+    """
     graph = {}
 
     # Each node in the list is represented in the following JSON format:
@@ -45,10 +45,11 @@ def generate_airports_graph(airports: list):
 
     return graph
 
-# Implements the Dijkstra's algorithm to find single source
-# shortest path on a weighted graph
-def cheapest_graph_path(graph: dict, start: str, end: str):
 
+def cheapest_graph_path(graph: dict, start: str, end: str):
+    """Implements the Dijkstra's algorithm to find single source
+    shortest path on a weighted graph
+    """
     # If the start and end nodes are the same, return the start node with a cost of 0
     if start == end:
         return [start], 0
