@@ -50,7 +50,7 @@ def cheapest_graph_path(graph: dict, start: str, end: str):
     """Implements the Dijkstra's algorithm to find single source
     shortest path on a weighted graph
     """
-    # If the start and end nodes are the same, return the start node with a cost of 0
+    # Early return if start and end nodes are the same
     if start == end:
         return [start], 0
 
@@ -71,7 +71,7 @@ def cheapest_graph_path(graph: dict, start: str, end: str):
     # While the priority queue is not empty
     while priority_queue:
 
-        # Get the node with the minimum cost from the priority queue
+        # Pop the node with the minimum cost from the priority queue
         current_cost, current_node = heapq.heappop(priority_queue)
 
         # If the current node is the end node, return the cheapest path and its cost
