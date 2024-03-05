@@ -83,7 +83,7 @@ def cheapest_graph_path(graph: dict, start: str, end: str):
         for neighbor, weight in graph[current_node]:
             cost = current_cost + weight
 
-            # If neighbor is reachable from the current node and the cost to reach neighbor is cheaper than the previous cost
+            # If the cost to reach neighbor is cheaper than the previous cost
             if cost < costs[neighbor]:
 
                 # Perform the relaxation operation (update the cost of the neighbor)

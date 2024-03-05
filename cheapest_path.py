@@ -27,11 +27,11 @@ def main():
         end_airport = sys.argv[2]
 
     # Get airports from local json file
-    airports_data = get_airports('./airports.json')
+    airports_list = get_airports('./airports.json')
 
     # Get cheapest path and related cost for user-provided start and end airports
     cheapest_path, cost = find_cheapest_path(
-        airports_data, start_airport, end_airport)
+        airports_list, start_airport, end_airport)
 
     if not cheapest_path:
         print(f"No path found between {start_airport} and {end_airport}.")
