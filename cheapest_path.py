@@ -27,7 +27,7 @@ def main():
         end_airport = sys.argv[2]
 
     # Get airports from local json file
-    airports_list = get_airports('./airports.json')
+    airports_list = get_airports('./data/airports.json')
 
     # Get cheapest path and related cost for user-provided start and end airports
     cheapest_path, cost = find_cheapest_path(
