@@ -11,8 +11,8 @@ def main():
 
     # Interactively ask for start and end airports
     if len(sys.argv) == 1:
-        start_airport = input("Enter the start airport: ")
-        end_airport = input("Enter the end airport: ")
+        start_airport = input("Enter the start airport: ").upper()
+        end_airport = input("Enter the end airport: ").upper()
 
     # Show usage if the number of arguments is not correct
     if len(sys.argv) != 1 and len(sys.argv) != 3:
@@ -23,8 +23,8 @@ def main():
 
     # Get start and end airports from command line arguments
     if not start_airport and not end_airport:
-        start_airport = sys.argv[1]
-        end_airport = sys.argv[2]
+        start_airport = sys.argv[1].upper()
+        end_airport = sys.argv[2].upper()
 
     # Get airports from local json file
     airports_list = get_airports('./data/airports.json')
