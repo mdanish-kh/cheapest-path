@@ -1,5 +1,9 @@
 # Description: This file contains utility functions for the main program.
+
+# For deserializing json data
 import json
+
+# For priority queue implementation
 import heapq
 
 

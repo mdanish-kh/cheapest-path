@@ -1,4 +1,7 @@
+# Helper functions to find the cheapest path between two airports
 from utils import get_airports, generate_airports_graph, cheapest_graph_path
+
+# For reading command line arguments
 import sys
 
 """Entry point of the program
